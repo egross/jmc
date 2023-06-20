@@ -40,7 +40,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.WeakHashMap;
-import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -138,7 +137,6 @@ import org.openjdk.jmc.ui.handlers.MethodFormatter;
 import org.openjdk.jmc.ui.misc.AbstractStructuredContentProvider;
 import org.openjdk.jmc.ui.misc.CompositeToolkit;
 import org.openjdk.jmc.ui.misc.CopySettings;
-import org.openjdk.jmc.ui.misc.DisplayToolkit;
 import org.openjdk.jmc.ui.misc.FormatToolkit;
 import org.openjdk.jmc.ui.misc.MementoToolkit;
 import org.openjdk.jmc.ui.misc.SWTColorToolkit;
@@ -776,32 +774,24 @@ public class StacktraceView extends ViewPart implements ISelectionListener {
 	private void rebuildModel() {
 		// Release old model before building the new
 		setViewerInput(null);
-		CompletableFuture<StacktraceModel> modelPreparer = getModelPreparer(createStacktraceModel(), !treeLayout);
-		modelPreparer.thenAcceptAsync(this::setModel, DisplayToolkit.inDisplayThread())
-				.exceptionally(StacktraceView::handleModelBuildException);
+		StacktraceModel modelPreparer = getModelPreparerSync(createStacktraceModel(), !treeLayout);
+		this.setModel(modelPreparer);
 	}
 
-	private static CompletableFuture<StacktraceModel> getModelPreparer(
-		StacktraceModel model, boolean materializeSelectedBranches) {
-		return CompletableFuture.supplyAsync(() -> {
-			Fork root = model.getRootFork();
-			if (materializeSelectedBranches) {
-				Branch selectedBranch = getLastSelectedBranch(root);
-				if (selectedBranch != null) {
-					selectedBranch.getEndFork();
-				}
+	
+	private static StacktraceModel getModelPreparerSync(StacktraceModel model, boolean materializeSelectedBranches) {
+		Fork root = model.getRootFork();
+		if (materializeSelectedBranches) {
+			Branch selectedBranch = getLastSelectedBranch(root);
+			if (selectedBranch != null) {
+				selectedBranch.getEndFork();
 			}
-			return model;
-		});
-	}
-
-	private static Void handleModelBuildException(Throwable ex) {
-		FlightRecorderUI.getDefault().getLogger().log(Level.SEVERE, "Failed to build stacktrace view model", ex); //$NON-NLS-1$
-		return null;
+		}
+		return model;
 	}
 
 	private void setModel(StacktraceModel model) {
-		if (!viewer.getControl().isDisposed()) {
+		if  (!viewer.getControl().isDisposed()) {
 			setViewerInput(model.getRootFork());
 		}
 		List<Pair<String, IAttribute<IQuantity>>> attrList = AttributeSelection.extractAttributes(itemsToShow);
