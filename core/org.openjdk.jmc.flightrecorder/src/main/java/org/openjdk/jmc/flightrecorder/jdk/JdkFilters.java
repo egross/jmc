@@ -199,22 +199,22 @@ public final class JdkFilters {
 			};
 		}
 	}
-	
-	public static class MethodFilterObject implements IItemFilter {
-		
-		private final IMCMethod methodObject;
-		
-		/**
-		 * Constructs a filter that accepts stack trace frames matching the provided method
-		 * name and type (class name)
 
-		 * @param methoObject
+	public static class MethodFilterObject implements IItemFilter {
+
+		private final IMCMethod methodObject;
+
+		/**
+		 * Constructs a filter that accepts stack trace frames matching the provided method name and
+		 * type (class name)
+		 * 
+		 * @param methodObject
 		 *            Method object to match
 		 */
 		public MethodFilterObject(IMCMethod methodObject) {
 			this.methodObject = methodObject;
 		}
-		
+
 		@Override
 		public Predicate<IItem> getPredicate(IType<IItem> type) {
 			final IMemberAccessor<?, IItem> accessor = JfrAttributes.EVENT_STACKTRACE.getAccessor(type);
