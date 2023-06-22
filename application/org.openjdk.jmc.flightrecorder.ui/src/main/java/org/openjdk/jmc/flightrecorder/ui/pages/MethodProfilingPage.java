@@ -44,6 +44,7 @@ import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
 import org.eclipse.jface.viewers.ViewerColumn;
@@ -244,6 +245,7 @@ public class MethodProfilingPage extends AbstractDataPage {
 		private FilterComponent tableFilter;
 		private FlavorSelector flavorSelector;
 		private MethodFormatter methodFormatter;
+		private IItemCollection selectionItems;
 		private int[] columnWidths = {650, 80, 120};
 
 		MethodProfilingUi(Composite parent, FormToolkit toolkit, IPageContainer pageContainer, IState state) {
@@ -488,7 +490,22 @@ public class MethodProfilingPage extends AbstractDataPage {
 		}
 
 		private void onInputSelected(IItemCollection items, IRange<IQuantity> timeRange) {
+			this.selectionItems = items;
+			table.show(getItems());
+
+			Object[] tableInput = ((Object[]) table.getManager().getViewer().getInput());
+			if (selectionItems != null && tableInput != null) {
+				table.getManager().getViewer().setSelection(new StructuredSelection(tableInput));
+			} else {
+				table.getManager().getViewer().setSelection(null);
+			}
 		}
+
+		
+		private IItemCollection getItems() {
+			return selectionItems != null ? selectionItems.apply(TABLE_ITEMS) : table.getAllRows().getItems();
+		}
+		
 	}
 
 	private static TableSettings getTableSettings(IState state) {
