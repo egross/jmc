@@ -353,6 +353,7 @@ public class MethodProfilingPage extends AbstractDataPage {
 		@Override
 		public void saveTo(IWritableState writableState) {
 			PersistableSashForm.saveState(sash, writableState.createChild(SASH_ELEMENT));
+			table.getManager().getSettings().saveState(writableState.createChild(TABLE_ELEMENT));
 			methodFormatter.saveState(writableState.createChild(METHOD_FORMAT_KEY));
 			saveToLocal();
 		}
