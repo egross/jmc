@@ -62,6 +62,7 @@ import org.openjdk.jmc.common.unit.IQuantity;
 import org.openjdk.jmc.common.unit.UnitLookup;
 import org.openjdk.jmc.common.util.MemberAccessorToolkit;
 import org.openjdk.jmc.flightrecorder.IParserStats.IEventStats;
+import org.openjdk.jmc.flightrecorder.internal.util.InternCacheProvider;
 import org.openjdk.jmc.flightrecorder.parser.IConstantPoolExtension;
 import org.openjdk.jmc.flightrecorder.stacktrace.FrameSeparator;
 import org.openjdk.jmc.flightrecorder.stacktrace.FrameSeparator.FrameCategorization;
@@ -244,6 +245,10 @@ public class ParserStats {
 
 		public ConstantItem(String typeName, Object constant) {
 			this.typeName = typeName;
+			if (constant instanceof IMCStackTrace) {
+				constant = InternCacheProvider.INSTANCE.getWeakInterner(IMCStackTrace.class)
+						.intern((IMCStackTrace) constant);
+			}
 			this.constant = constant;
 		}
 
