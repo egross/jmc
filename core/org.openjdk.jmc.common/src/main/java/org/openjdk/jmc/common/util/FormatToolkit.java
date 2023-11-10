@@ -360,25 +360,30 @@ public class FormatToolkit {
 		linePrefix = linePrefix != null ? linePrefix : "at "; //$NON-NLS-1$
 		lineSeparator = lineSeparator != null ? lineSeparator : System.getProperty("line.separator"); //$NON-NLS-1$
 
-		StringBuilder sb = new StringBuilder();
-		if (trace.getFrames() != null && trace.getFrames().size() > 0) {
-			int rowIndex = 0;
-			int count = trace.getFrames().size();
-			for (IMCFrame frame : trace.getFrames()) {
-				IMCMethod method = frame.getMethod();
-				String methodText = Encode.forHtml(getHumanReadable(method, showReturnValue, showReturnValuePackage,
-						showClassName, showClassPackageName, showArguments, showArgumentsPackage));
+		if (trace.getStackTraceString() == null) {
+			StringBuilder sb = new StringBuilder();
+			if (trace.getFrames() != null && trace.getFrames().size() > 0) {
+				int rowIndex = 0;
+				int count = trace.getFrames().size();
+				for (IMCFrame frame : trace.getFrames()) {
+					IMCMethod method = frame.getMethod();
+					String methodText = Encode.forHtml(getHumanReadable(method, showReturnValue, showReturnValuePackage,
+							showClassName, showClassPackageName, showArguments, showArgumentsPackage));
 
-				sb.append(indent).append(linePrefix).append(methodText).append(lineSeparator);
+					sb.append(indent).append(linePrefix).append(methodText).append(lineSeparator);
 
-				if (rowIndex == maximumVisibleStackTraceElements && rowIndex != count - 1) {
-					sb.append(indent).append("..." + lineSeparator); //$NON-NLS-1$
-					return sb.toString();
+					if (rowIndex == maximumVisibleStackTraceElements && rowIndex != count - 1) {
+						sb.append(indent).append("..." + lineSeparator); //$NON-NLS-1$
+						return sb.toString();
+					}
+					rowIndex++;
 				}
-				rowIndex++;
 			}
+
+			trace.setStackTraceString(sb.toString());
 		}
-		return sb.toString();
+
+		return trace.getStackTraceString();
 	}
 
 	/**

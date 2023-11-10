@@ -41,6 +41,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.openjdk.jmc.common.IMCStackTrace;
 import org.openjdk.jmc.common.collection.FastAccessNumberMap;
 import org.openjdk.jmc.common.unit.ContentType;
 import org.openjdk.jmc.common.unit.IUnit;
@@ -76,6 +77,7 @@ import org.openjdk.jmc.flightrecorder.internal.parser.v1.ValueReaders.Reflective
 import org.openjdk.jmc.flightrecorder.internal.parser.v1.ValueReaders.StringReader;
 import org.openjdk.jmc.flightrecorder.internal.parser.v1.ValueReaders.StructReader;
 import org.openjdk.jmc.flightrecorder.internal.parser.v1.ValueReaders.TicksTimestampReader;
+import org.openjdk.jmc.flightrecorder.internal.util.InternCacheProvider;
 import org.openjdk.jmc.flightrecorder.internal.util.JfrInternalConstants;
 import org.openjdk.jmc.flightrecorder.messages.internal.Messages;
 import org.openjdk.jmc.flightrecorder.parser.IEventSink;
@@ -317,7 +319,11 @@ class TypeManager {
 
 		void readEvent(IDataInput input) throws InvalidJfrFileException, IOException {
 			for (int i = 0; i < valueReaders.size(); i++) {
-				reusableStruct[i] = valueReaders.get(i).read(input, false);
+				Object o = valueReaders.get(i).read(input, false);
+				if (o instanceof JfrStackTrace) {
+					o = InternCacheProvider.INSTANCE.getWeakInterner(IMCStackTrace.class).intern((JfrStackTrace) o);
+				}
+				reusableStruct[i] = o;
 			}
 			eventSink.addEvent(reusableStruct);
 		}

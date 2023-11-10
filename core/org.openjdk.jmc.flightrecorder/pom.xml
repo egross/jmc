@@ -48,5 +48,10 @@
 			<artifactId>common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>31.0.1-sfdc.6</version>
+		</dependency>
 	</dependencies>
 </project>

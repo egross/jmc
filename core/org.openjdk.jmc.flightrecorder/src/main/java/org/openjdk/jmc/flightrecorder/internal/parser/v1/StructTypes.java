@@ -60,6 +60,7 @@ import org.openjdk.jmc.common.unit.QuantityConversionException;
 import org.openjdk.jmc.common.unit.UnitLookup;
 import org.openjdk.jmc.common.util.FormatToolkit;
 import org.openjdk.jmc.common.util.MethodToolkit;
+import org.openjdk.jmc.flightrecorder.internal.util.InternCacheProvider;
 import org.openjdk.jmc.flightrecorder.internal.util.ParserToolkit;
 
 class StructTypes {
@@ -720,6 +721,7 @@ class StructTypes {
 		public Object truncated;
 
 		private boolean isParsed = false;
+		private String stackTraceString;
 
 		@SuppressWarnings("unchecked")
 		@Override
@@ -736,6 +738,14 @@ class StructTypes {
 		public TruncationState getTruncationState() {
 			return truncated == null ? TruncationState.UNKNOWN : (((Boolean) truncated).booleanValue()
 					? TruncationState.TRUNCATED : TruncationState.NOT_TRUNCATED);
+		}
+
+		public String getStackTraceString() {
+			return stackTraceString;
+		}
+
+		public void setStackTraceString(String stackTraceString) {
+			this.stackTraceString = InternCacheProvider.INSTANCE.getWeakInterner(String.class).intern(stackTraceString);
 		}
 
 		@Override
@@ -765,7 +775,13 @@ class StructTypes {
 			if (!isParsed) {
 				// The 'frames' field is used in hashCode and equality computations but may change when parsed
 				// Force parsing the field to make the hashCode and equality computations to perform consistently
-				getFrames().forEach(JfrStackTrace::ensureParsedFrame);
+				List<IMCFrame> frames = (List<IMCFrame>) getFrames();
+				for (int i = 0; i < frames.size(); i++) {
+					IMCFrame f = (IMCFrame) frames.get(i);
+					f = InternCacheProvider.INSTANCE.getWeakInterner(IMCFrame.class).intern((IMCFrame) f);
+					ensureParsedFrame(f);
+					frames.set(i, f);
+				}
 				isParsed = true;
 			}
 		}

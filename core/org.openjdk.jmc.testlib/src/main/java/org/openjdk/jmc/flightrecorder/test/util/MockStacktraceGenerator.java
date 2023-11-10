@@ -68,6 +68,18 @@ public class MockStacktraceGenerator {
 			return truncationState;
 		}
 
+		@Override
+		public String getStackTraceString() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public void setStackTraceString(String stackTraceString) {
+			// TODO Auto-generated method stub
+
+		}
+
 	}
 
 	private static class MockFrame implements IMCFrame {

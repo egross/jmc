@@ -147,6 +147,9 @@
 									<id>io.github.bric3.fireplace:fireplace-swing-animation:${fireplace.version}</id>
 									<source>true</source>
 								</artifact>
+								<artifact>
+									<id>com.google.guava:guava:31.0.1-jre</id>
+								</artifact>
 								<!-- Dependency of fireplace-swing-animation -->
 								<artifact>
 									<id>org.pushing-pixels:radiance-animation:${radiance.version}</id>

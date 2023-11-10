@@ -106,4 +106,8 @@ public interface IMCStackTrace {
 	 * @return the truncation state
 	 */
 	TruncationState getTruncationState();
+
+	String getStackTraceString();
+
+	void setStackTraceString(String stackTraceString);
 }

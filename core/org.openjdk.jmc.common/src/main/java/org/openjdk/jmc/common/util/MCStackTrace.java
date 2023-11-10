@@ -90,4 +90,16 @@ public class MCStackTrace implements IMCStackTrace {
 		return truncationState.hashCode() + 31 * frames.hashCode();
 	}
 
+	@Override
+	public String getStackTraceString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setStackTraceString(String stackTraceString) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
