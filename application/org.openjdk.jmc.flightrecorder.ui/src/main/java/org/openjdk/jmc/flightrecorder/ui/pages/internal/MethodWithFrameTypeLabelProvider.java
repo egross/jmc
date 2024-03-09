@@ -123,14 +123,18 @@ public class MethodWithFrameTypeLabelProvider extends ColumnLabelProvider {
 
 	@Override
 	public String getText(Object key) {
+		IMCFrame.Type frameType = null;
 		if (key instanceof MethodWithFrameType) {
 			MethodWithFrameType mwft = (MethodWithFrameType) key;
 			key = mwft.getMethod();
+			frameType = mwft.getFrameType();
 		} else if (key instanceof IMCFrame) {
 			key = ((IMCFrame) key).getMethod();
+			frameType = ((IMCFrame) key).getType();
 		}
 		if (key instanceof IMCMethod) {
-			return FormatToolkit.getHumanReadable((IMCMethod) key, false, false, true, true, true, false, false);
+			return FormatToolkit.getHumanReadable((IMCMethod) key, false, false, true, true, true, false, false)
+					+ ((frameType != null) ? (" [" + frameType + "]") : "");
 		}
 		if (key instanceof IDisplayable) {
 			return ((IDisplayable) key).displayUsing(IDisplayable.EXACT);

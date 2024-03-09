@@ -502,11 +502,10 @@ public class MethodProfilingPage extends AbstractDataPage {
 			}
 		}
 
-		
 		private IItemCollection getItems() {
 			return selectionItems != null ? selectionItems.apply(TABLE_ITEMS) : table.getAllRows().getItems();
 		}
-		
+
 	}
 
 	private static TableSettings getTableSettings(IState state) {

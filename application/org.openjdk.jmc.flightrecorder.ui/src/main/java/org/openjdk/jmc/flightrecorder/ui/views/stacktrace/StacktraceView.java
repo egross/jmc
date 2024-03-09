@@ -802,7 +802,6 @@ public class StacktraceView extends ViewPart implements ISelectionListener {
 		this.setModel(modelPreparer);
 	}
 
-	
 	private static StacktraceModel getModelPreparerSync(StacktraceModel model, boolean materializeSelectedBranches) {
 		Fork root = model.getRootFork();
 		if (materializeSelectedBranches) {
