@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
@@ -36,6 +36,7 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.openjdk.jmc.flightrecorder.ui.messages.internal.messages"; //$NON-NLS-1$
+	public static String AgentsPage_PAGE_NAME;
 	public static String ATTRIBUTE_CONFIG_PAGE_RULES;
 	public static String ATTRIBUTE_CONFIG_RULE;
 	public static String ATTRIBUTE_CONFIG_RULES;
@@ -166,6 +167,7 @@ public class Messages extends NLS {
 	public static String FileIOPage_PERCENTILE_SELECTION;
 	public static String FileIOPage_ROW_FILE_READ;
 	public static String FileIOPage_ROW_FILE_WRITE;
+	public static String FileIOPage_ROW_FILE_FORCE;
 	public static String FileIOPage_SELECTED_PATH;
 	public static String FileIOPage_SELECTED_PATHS;
 	public static String FileIOPage_TIMELINE_SELECTION;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
@@ -209,6 +209,15 @@ public class Messages {
 	public static final String DuplicateFlagsRule_RESULT_EXPLANATION = "DuplicateFlagsRule_RESULT_EXPLANATION"; //$NON-NLS-1$
 	public static final String DuplicateFlagsRule_RESULT_SOLUTION = "DuplicateFlagsRule_RESULT_SOLUTION"; //$NON-NLS-1$
 	public static final String DuplicateFlagsRule_RESULT_SUMMARY_OK = "DuplicateFlagsRule_RESULT_SUMMARY_OK"; //$NON-NLS-1$
+	public static final String DynamicallyLoadedAgentsRule_RULE_NAME = "DynamicallyLoadedAgentsRule_RULE_NAME"; //$NON-NLS-1$
+	public static final String DynamicallyLoadedAgentsRule_TEXT_EXPLANATION = "DynamicallyLoadedAgentsRule_TEXT_EXPLANATION"; //$NON-NLS-1$
+	public static final String DynamicallyLoadedAgentsRule_TEXT_OK = "DynamicallyLoadedAgentsRule_TEXT_OK"; //$NON-NLS-1$
+	public static final String DynamicallyLoadedAgentsRule_TEXT_SOLUTION = "DynamicallyLoadedAgentsRule_TEXT_SOLUTION"; //$NON-NLS-1$
+	public static final String DynamicallyLoadedAgentsRule_TEXT_SUMMARY = "DynamicallyLoadedAgentsRule_TEXT_SUMMARY"; //$NON-NLS-1$
+	public static final String DynamicallyLoadedAgentsRule_JAVA_WARNING_LIMIT = "DynamicallyLoadedAgentsRule_JAVA_WARNING_LIMIT"; //$NON-NLS-1$;
+	public static final String DynamicallyLoadedAgentsRule_JAVA_WARNING_LIMIT_LONG = "DynamicallyLoadedAgentsRule_JAVA_WARNING_LIMIT_LONG"; //$NON-NLS-1$;
+	public static final String DynamicallyLoadedAgentsRule_NATIVE_WARNING_LIMIT = "DynamicallyLoadedAgentsRule_NATIVE_WARNING_LIMIT"; //$NON-NLS-1$;
+	public static final String DynamicallyLoadedAgentsRule_NATIVE_WARNING_LIMIT_LONG = "DynamicallyLoadedAgentsRule_NATIVE_WARNING_LIMIT_LONG"; //$NON-NLS-1$;
 	public static final String ErrorRule_CONFIG_EXCLUDED_ERRORS = "ErrorRule_CONFIG_EXCLUDED_ERRORS"; //$NON-NLS-1$
 	public static final String ErrorRule_CONFIG_EXCLUDED_ERRORS_LONG = "ErrorRule_CONFIG_EXCLUDED_ERRORS_LONG"; //$NON-NLS-1$
 	public static final String ErrorRule_CONFIG_INFO_LIMIT = "ErrorRule_CONFIG_INFO_LIMIT"; //$NON-NLS-1$
@@ -269,6 +278,13 @@ public class Messages {
 	public static final String FileWriteRuleFactory_TEXT_WARN_LONG = "FileWriteRuleFactory_TEXT_WARN_LONG"; //$NON-NLS-1$
 	public static final String FileWriteRule_CONFIG_WARNING_LIMIT = "FileWriteRule_CONFIG_WARNING_LIMIT"; //$NON-NLS-1$
 	public static final String FileWriteRule_CONFIG_WARNING_LIMIT_LONG = "FileWriteRule_CONFIG_WARNING_LIMIT_LONG"; //$NON-NLS-1$
+	public static final String FileForceRuleFactory_RULE_NAME = "FileForceRuleFactory_RULE_NAME"; //$NON-NLS-1$
+	public static final String FileForceRuleFactory_TEXT_NO_EVENTS = "FileForceRuleFactory_TEXT_NO_EVENTS"; //$NON-NLS-1$
+	public static final String FileForceRuleFactory_TEXT_OK = "FileForceRuleFactory_TEXT_OK"; //$NON-NLS-1$
+	public static final String FileForceRuleFactory_TEXT_WARN = "FileForceRuleFactory_TEXT_WARN"; //$NON-NLS-1$
+	public static final String FileForceRuleFactory_TEXT_WARN_LONG = "FileForceRuleFactory_TEXT_WARN_LONG"; //$NON-NLS-1$
+	public static final String FileForceRule_CONFIG_INFO_LIMIT = "FileForceRule_CONFIG_INFO_LIMIT"; //$NON-NLS-1$
+	public static final String FileForceRule_CONFIG_INFO_LIMIT_LONG = "FileForceRule_CONFIG_INFO_LIMIT_LONG"; //$NON-NLS-1$
 	public static final String FinalizersRunRule_CONFIG_FINALIZABLE_CLASSES_INCLUDE_REGEXP = "FinalizersRunRule_CONFIG_FINALIZABLE_CLASSES_INCLUDE_REGEXP"; //$NON-NLS-1$
 	public static final String FinalizersRunRule_CONFIG_FINALIZABLE_CLASSES_INCLUDE_REGEXP_DESC = "FinalizersRunRule_CONFIG_FINALIZABLE_CLASSES_INCLUDE_REGEXP_DESC"; //$NON-NLS-1$
 	public static final String FinalizersRunRule_EXPLANATION = "FinalizersRunRule_EXPLANATION"; //$NON-NLS-1$
@@ -306,6 +322,9 @@ public class Messages {
 	public static final String GcFreedRatioRule_RULE_NAME = "GcFreedRatioRule_RULE_NAME"; //$NON-NLS-1$
 	public static final String GcFreedRatioRule_WINDOW_SIZE = "GcFreedRatioRule_WINDOW_SIZE"; //$NON-NLS-1$
 	public static final String GcFreedRatioRule_WINDOW_SIZE_DESC = "GcFreedRatioRule_WINDOW_SIZE_DESC"; //$NON-NLS-1$
+	public static final String GcInvertedParallelism_RULE_NAME = "GcInvertedParallelism_RULE_NAME"; //$NON-NLS-1$
+	public static final String GcInvertedParallelism_TEXT_WARN_SHORT = "GcInvertedParallelism_TEXT_WARN_SHORT"; //$NON-NLS-1$
+	public static final String GcInvertedParallelism_TEXT_WARN_LONG = "GcInvertedParallelism_TEXT_WARN_LONG"; //$NON-NLS-1$
 	public static final String GcLockerRuleFactory_RULE_NAME = "GcLockerRuleFactory_RULE_NAME"; //$NON-NLS-1$
 	public static final String GcLockerRuleFactory_TEXT_INFO = "GcLockerRuleFactory_TEXT_INFO"; //$NON-NLS-1$
 	public static final String GcLockerRuleFactory_TEXT_INFO_LONG = "GcLockerRuleFactory_TEXT_INFO_LONG"; //$NON-NLS-1$
@@ -470,6 +489,15 @@ public class Messages {
 	public static final String MethodProfilingRule_WINDOW_SIZE_DESC = "MethodProfilingRule_WINDOW_SIZE_DESC"; //$NON-NLS-1$
 	public static final String MethodProfilingRule_EXCLUDED_PACKAGES = "MethodProfilingRule_EXCLUDED_PACKAGES"; //$NON-NLS-1$
 	public static final String MethodProfilingRule_EXCLUDED_PACKAGES_DESC = "MethodProfilingRule_EXCLUDED_PACKAGES_DESC"; //$NON-NLS-1$
+	public static final String MultipleAgentsRule_RULE_NAME = "MultipleAgentsRule_RULE_NAME"; //$NON-NLS-1$
+	public static final String MultipleAgentsRule_TEXT_EXPLANATION = "MultipleAgentsRule_TEXT_EXPLANATION"; //$NON-NLS-1$
+	public static final String MultipleAgentsRule_TEXT_OK = "MultipleAgentsRule_TEXT_OK"; //$NON-NLS-1$
+	public static final String MultipleAgentsRule_TEXT_SOLUTION = "MultipleAgentsRule_TEXT_SOLUTION"; //$NON-NLS-1$
+	public static final String MultipleAgentsRule_TEXT_SUMMARY = "MultipleAgentsRule_TEXT_SUMMARY"; //$NON-NLS-1$
+	public static final String MultipleAgentsRule_JAVA_WARNING_LIMIT = "MultipleAgentsRule_JAVA_WARNING_LIMIT"; //$NON-NLS-1$;
+	public static final String MultipleAgentsRule_JAVA_WARNING_LIMIT_LONG = "MultipleAgentsRule_JAVA_WARNING_LIMIT_LONG"; //$NON-NLS-1$;
+	public static final String MultipleAgentsRule_NATIVE_WARNING_LIMIT = "MultipleAgentsRule_NATIVE_WARNING_LIMIT"; //$NON-NLS-1$;
+	public static final String MultipleAgentsRule_NATIVE_WARNING_LIMIT_LONG = "MultipleAgentsRule_NATIVE_WARNING_LIMIT_LONG"; //$NON-NLS-1$;
 	public static final String NumberOfGcThreadsRuleFactory_TEXT_INFO = "NumberOfGcThreadsRuleFactory_TEXT_INFO"; //$NON-NLS-1$
 	public static final String NumberOfGcThreadsRuleFactory_TEXT_INFO_LONG = "NumberOfGcThreadsRuleFactory_TEXT_INFO_LONG"; //$NON-NLS-1$
 	public static final String ObjectStatisticsDataProvider_AGGR_LIVE_SIZE_INCREASE = "ObjectStatisticsDataProvider_AGGR_LIVE_SIZE_INCREASE"; //$NON-NLS-1$
